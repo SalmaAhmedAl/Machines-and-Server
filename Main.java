@@ -17,6 +17,15 @@ public class Main {
                 System.out.println("No machine available");
             }
         }
+        System.out.println("----------------------------------------------");
+        
+        for(int i = 0; i < 10; i++) {
+            Machine nextMachine = CopyManager.getNextMachineUsingPriorityQueue(machines);
+
+            if (nextMachine != null) {
+                System.out.println("Next machine: " + nextMachine.getMachineNumber());
+            }
+        }
         
     }
 }

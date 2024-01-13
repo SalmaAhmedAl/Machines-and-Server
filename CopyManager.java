@@ -17,4 +17,19 @@ public class CopyManager {
 
         return nextMachine;
     }
+
+    public static Machine getNextMachineUsingPriorityQueue(List<Machine> machines) {
+        PriorityQueue<Machine> machineQueue = new PriorityQueue<>(
+            Comparator.comparingInt(Machine::getLastCopyTime)
+        );
+
+        machineQueue.addAll(machines);
+        Machine nextMachine = machineQueue.poll();
+
+        if (nextMachine != null) {
+            nextMachine.setLastCopyTime(nextMachine.getLastCopyTime() + 1);
+        }
+
+        return nextMachine;
+    }
 }
